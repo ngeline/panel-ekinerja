@@ -2,6 +2,11 @@
 
 namespace Config;
 
+
+use App\Filters\AuthFilter;
+use App\Filters\MandorFilter;
+use App\Filters\PelaksanaFilter;
+use App\Filters\TukangFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -21,6 +26,10 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'AuthFilter'          => AuthFilter::class,
+        'MandorFilter'        => MandorFilter::class,
+        'PelaksanaFilter'     => PelaksanaFilter::class,
+        'TukangFilter'        => TukangFilter::class,
     ];
 
     /**
@@ -30,7 +39,7 @@ class Filters extends BaseConfig
     public array $globals = [
         'before' => [
             // 'honeypot',
-            // 'csrf',
+            'csrf',
             // 'invalidchars',
         ],
         'after' => [
