@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Atasan extends Migration
+class Pengawas extends Migration
 {
     public function up()
     {
@@ -15,7 +15,7 @@ class Atasan extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'nama_atasan' => [
+            'nama_pengawas' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255
             ],
@@ -24,11 +24,11 @@ class Atasan extends Migration
             'deleted_at datetime default null'
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('atasan');
+        $this->forge->createTable('pengawas');
     }
 
     public function down()
     {
-        $this->forge->dropTable('atasan');
+        $this->forge->dropTable('pengawas');
     }
 }

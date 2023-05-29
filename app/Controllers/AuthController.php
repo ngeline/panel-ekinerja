@@ -12,7 +12,7 @@ class AuthController extends BaseController
 
     public function __construct()
     {
-        helper(['form', 'url', 'validation', 'session', 'text']);
+        helper(['form', 'url', 'validation', 'session']);
         $this->users = new UsersModel();
     }
 

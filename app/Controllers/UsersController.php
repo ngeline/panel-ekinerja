@@ -18,10 +18,31 @@ class UsersController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Kelola Users',
-            'users' => $this->users->getDetails()
+            'title' => 'Kelola Data Users',
+            'users' => $this->users->getDetails(),
         ];
 
         return view('mandor/users/index', $data);
+    }
+
+    public function indexPelaksana()
+    {
+        $data = [
+            'title' => 'Kelola Data Tukang',
+            'users' => $this->users->getDetailTukang(),
+        ];
+        return view('pelaksana/tukang/index', $data);
+    }
+
+    public function store()
+    {
+        //mengambil semua request
+        $data = $this->request->getPost();
+    }
+
+    public function storePelaksana()
+    {
+        //mengambil semua request
+        $data = $this->request->getPost();
     }
 }

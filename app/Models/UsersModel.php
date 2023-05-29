@@ -57,9 +57,18 @@ class UsersModel extends Model
     public function getDetails()
     {
         $builder = $this->db->table('users');
-        $builder->join('atasan', 'atasan.id = users.atasan_id')
+        $builder->join('pengawas', 'pengawas.id = users.pengawas_id')
             ->join('jabatan', 'jabatan.id = users.jabatan_id')
             ->join('bidang', 'bidang.id = users.bidang_id');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+    public function getDetailTukang()
+    {
+        $builder = $this->db->table('users');
+        $builder->join('pengawas', 'pengawas.id = users.pengawas_id')
+            ->join('jabatan', 'jabatan.id = users.jabatan_id')
+            ->join('bidang', 'bidang.id = users.bidang_id')->where('role', 'tukang');
         $query = $builder->get();
         return $query->getResult();
     }

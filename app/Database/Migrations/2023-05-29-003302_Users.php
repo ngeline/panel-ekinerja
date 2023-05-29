@@ -35,7 +35,7 @@ class Users extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255
             ],
-            'atasan_id' => [
+            'pengawas_id' => [
                 'type' => 'BIGINT',
                 'constraint' => 10
             ],

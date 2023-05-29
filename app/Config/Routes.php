@@ -32,7 +32,36 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+//Authentication
 $routes->get('/', 'AuthController::index');
+$routes->post('postLogin', 'AuthController::postLogin');
+$routes->get('logout', 'AuthController::logout');
+
+$routes->get('errors', 'AuthController::errors');
+
+$routes->group('', ['filter' => 'AuthFilter'], function ($routes) {
+    $routes->get('dashboard', 'DashboardController');
+
+    //Routes Mandor
+    $routes->group('mandor', ['filter' => 'MandorFilter'], function ($routes) {
+        //Users
+        $routes->get('kelola-users', 'UsersController::index');
+    });
+
+    //Routes Pelaksana
+    $routes->group('pelaksana', ['filter' => 'PelaksanaFilter'], function ($routes) {
+        //data Tukang
+        $routes->get('kelola-tukang', 'UsersController::indexPelaksana');
+    });
+
+    //Routes Tukang
+    $routes->group('tukang', ['filter' => 'TukangFilter'], function ($routes) {
+        //data Tukang
+        $routes->get('kelola-kegiatan', 'KegiatanController::index');
+    });
+});
+
 
 /*
  * --------------------------------------------------------------------
